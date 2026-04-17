@@ -1,7 +1,4 @@
-/*
- * Vencord, a Discord client mod
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
+
 
 import definePlugin from "@utils/types";
 
@@ -29,7 +26,6 @@ function extractUserId(input: string): string | null {
 function extractUsername(input: string): string | null {
     const value = input.trim();
 
-    // aceita formatos comuns de username atual e legado
     if (/^[a-z0-9._]{2,32}$/i.test(value)) return value;
     if (/^.{2,32}#\d{4}$/.test(value)) return value;
 
@@ -245,7 +241,7 @@ function openProfileById(userId: string) {
 }
 
 function goToAddFriendWithUsername(username: string) {
-    // Vai para a aba de adicionar amigo sem reload bruto
+
     try {
         history.pushState({}, "", `/channels/@me`);
         window.dispatchEvent(new PopStateEvent("popstate"));
@@ -253,7 +249,7 @@ function goToAddFriendWithUsername(username: string) {
         location.assign("/channels/@me");
     }
 
-    // Tenta preencher o campo de Add Friend
+
     setTimeout(() => {
         const inputs = Array.from(document.querySelectorAll("input")) as HTMLInputElement[];
         const target = inputs.find(i => {
